@@ -12,6 +12,7 @@
    6. الترويسة          14. المخطط العريض
    7. واجهة الرئيسية    15. الأسئلة الشائعة
    8. واجهات الصفحات    16. التذييل
+                        17. النسخة الإنجليزية
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -164,6 +165,7 @@ main:focus { outline: none; }
 
 /* قيمة لاتينية (رقم، بريد) داخل سياق عربي: تبقى محاذاة لبداية الصفحة */
 .ltr-value { direction: ltr; text-align: end; }
+[dir="ltr"] .ltr-value { text-align: start; }
 
 /* --------------------------------------------------------------------------
    3. التخطيط
@@ -408,12 +410,7 @@ main:focus { outline: none; }
   color: var(--cream);
   text-decoration: none;
 }
-/* معطّل مؤقتاً: لا توجد نسخة إنجليزية بعد */
-.nav__lang[aria-disabled="true"] {
-  opacity: .45;
-  cursor: not-allowed;
-  user-select: none;
-}
+.nav__lang:hover { color: var(--cream); border-color: var(--on-ink-outline); }
 
 .nav__cta {
   display: inline-flex;
@@ -983,6 +980,20 @@ main:focus { outline: none; }
   line-height: 1.7;
   color: var(--on-dark-3);
 }
+
+/* --------------------------------------------------------------------------
+   17. النسخة الإنجليزية (en/) — الاتجاه ينعكس تلقائياً لأن كل الخصائص منطقية،
+   وهنا فقط ما يخص الخط اللاتيني
+   -------------------------------------------------------------------------- */
+html[lang="en"] {
+  --font-body: 'IBM Plex Sans', 'IBM Plex Sans Arabic', 'Helvetica Neue', Arial, sans-serif;
+}
+html[lang="en"] .h1 { line-height: 1.15; letter-spacing: -0.015em; }
+html[lang="en"] .h2,
+html[lang="en"] .title-34,
+html[lang="en"] .title-32 { line-height: 1.2; letter-spacing: -0.01em; }
+html[lang="en"] .brand__name { letter-spacing: .01em; }
+html[lang="en"] .nav__lang:lang(ar) { font-family: 'IBM Plex Sans Arabic', Tahoma, Arial, sans-serif; }
 
 /* --------------------------------------------------------------------------
    عام
